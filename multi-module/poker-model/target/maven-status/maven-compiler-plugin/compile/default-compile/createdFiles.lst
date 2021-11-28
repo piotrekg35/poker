@@ -1,0 +1,10 @@
+pl\edu\agh\kis\pz1\model\Card.class
+pl\edu\agh\kis\pz1\model\Player.class
+pl\edu\agh\kis\pz1\model\HandCategories.class
+pl\edu\agh\kis\pz1\model\Scoring.class
+pl\edu\agh\kis\pz1\model\Game.class
+pl\edu\agh\kis\pz1\model\Suit.class
+pl\edu\agh\kis\pz1\model\Main.class
+pl\edu\agh\kis\pz1\model\PlayerStatus.class
+pl\edu\agh\kis\pz1\model\Rank.class
+pl\edu\agh\kis\pz1\model\Deck.class
