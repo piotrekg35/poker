@@ -1,0 +1,113 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>pl.edu.agh.kis.pz1</groupId>
+  <artifactId>multi-module</artifactId>
+  <version>1.0</version>
+
+  <name>Przyklad - aplikacja wielomodulowa</name>
+  <packaging>pom</packaging>
+
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+      <aggregate.report.dir>poker-tests/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
+  </properties>
+
+  <modules>
+      <module>poker-client</module>
+      <module>poker-model</module>
+      <module>poker-server</module>
+      <module>poker-tests</module>
+  </modules>
+
+  <dependencyManagement>
+      <dependencies>
+          <dependency>
+              <groupId>pl.edu.agh.kis.pz1</groupId>
+              <artifactId>poker-client</artifactId>
+              <version>${project.version}</version>
+          </dependency>
+          <dependency>
+              <groupId>pl.edu.agh.kis.pz1</groupId>
+              <artifactId>poker-tests</artifactId>
+              <version>${project.version}</version>
+          </dependency>
+          <dependency>
+              <groupId>pl.edu.agh.kis.pz1</groupId>
+              <artifactId>poker-model</artifactId>
+              <version>${project.version}</version>
+          </dependency>
+          <dependency>
+              <groupId>pl.edu.agh.kis.pz1</groupId>
+              <artifactId>poker-server</artifactId>
+              <version>${project.version}</version>
+          </dependency>
+          <dependency>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-javadoc-plugin</artifactId>
+              <version>3.3.1</version>
+          </dependency>
+      </dependencies>
+  </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.7.0.1746</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.6</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.7.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    <profiles>
+        <profile>
+            <id>coverage</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>prepare-agent</id>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
+</project>
